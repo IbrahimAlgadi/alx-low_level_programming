@@ -11,6 +11,7 @@
  * @n: the maximum number of characters to copy from src to
  * dest.
  * Return: void
+ *
  */
 
 char *_strncpy(char *dest, char *src, int n)

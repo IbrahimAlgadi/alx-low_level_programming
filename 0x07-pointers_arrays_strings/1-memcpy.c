@@ -2,7 +2,8 @@
 
 /**
  * _memcpy - Write a function that copies memory area.
- * The _memcpy() function copies n bytes from memory area src to memory area dest
+ * The _memcpy() function copies n bytes from memory area src
+ * to memory area dest
  *
  * Prototype: char *_memcpy(char *dest, char *src, unsigned int n);
  *

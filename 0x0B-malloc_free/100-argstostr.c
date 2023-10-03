@@ -1,27 +1,5 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
-
-/**
- * _strlen - calculate the length of a string.
- *
- * @s: the string to calculate it's length.
- * Return: length of a string.
- */
-
-int _strlen(char *s)
-{
-	int i;
-	int length = 0;
-
-	for (i = 0; s[i] != '\0'; i++)
-	{
-		length++;
-	}
-	return (length);
-}
-
-
 /**
   * argstostr - concatenates all arguments of the program.
   *
@@ -33,38 +11,42 @@ int _strlen(char *s)
   */
 char *argstostr(int ac, char **av)
 {
-	int i, j, size = 0, arg_string_idx = 0;
-	char *arg_string;
+	int i, j, k, size;
+	char *arg;
 
+	size = 0;
+	k = 0;
 	if (ac == 0 || av == NULL)
 		return (NULL);
-	while (i < ac)
-	{
-		size = size + _strlen(av[i]) + 1;
-		i++;
-	}
-	/*printf("Total Size Is: %d\n", size);*/
-
-	arg_string = malloc((sizeof(char) * size) + 1);
-	if (arg_string == NULL)
-		return (NULL);
-
 	i = 0;
 	while (i < ac)
 	{
 		j = 0;
-		while (j < _strlen(av[i]))
+		while (av[i][j])
 		{
-			arg_string[arg_string_idx] = av[i][j];
+			size++;
 			j++;
-			arg_string_idx++;
 		}
-		arg_string[arg_string_idx] = '\n';
+		size++;
 		i++;
-		arg_string_idx++;
 	}
-	/*printf("%d = %d\n", arg_string_idx, size);*/
-	arg_string[arg_string_idx] = '\0';
-
-	return (arg_string);
+	arg = malloc((sizeof(char) * size) + 1);
+	if (arg == NULL)
+		return (NULL);
+	i = 0;
+	while (i < ac)
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			arg[k] = av[i][j];
+			j++;
+			k++;
+		}
+		arg[k] = '\n';
+		k++;
+		i++;
+	}
+	arg[k] = '\0';
+	return (arg);
 }

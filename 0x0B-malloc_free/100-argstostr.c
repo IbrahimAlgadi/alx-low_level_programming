@@ -43,7 +43,7 @@ char *argstostr(int ac, char **av)
 	}
 	/*printf("Total Size Is: %d\n", size);*/
 
-	arg_string = malloc((sizeof(char) * size));
+	arg_string = malloc((sizeof(char) * size) + 1);
 	if (arg_string == NULL)
 		return (NULL);
 

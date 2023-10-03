@@ -62,7 +62,7 @@ char *argstostr(int ac, char **av)
 		arg_string_idx++;
 	}
 	/*printf("%d = %d\n", arg_string_idx, size);*/
-	arg_string[arg_string_idx - 2] = '\0';
+	arg_string[arg_string_idx] = '\0';
 
 	return (arg_string);
 }

@@ -33,9 +33,11 @@ int _strlen(char *s)
   */
 char *argstostr(int ac, char **av)
 {
-	int i = 0, j = 0, size = 0, arg_string_idx = 0;
+	int i, j, size = 0, arg_string_idx = 0;
 	char *arg_string;
 
+	if (ac == 0 || av == NULL)
+		return (NULL);
 	while (i < ac)
 	{
 		size = size + _strlen(av[i]) + 1;

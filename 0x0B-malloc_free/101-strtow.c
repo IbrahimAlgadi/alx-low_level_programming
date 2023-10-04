@@ -36,7 +36,6 @@ char **strtow(char *str)
 				st_end[st_end_idx] = i;
 				st_end_idx++;
 				/* Reallocate Word Mattrix Size */
-				/*word_matrix = (char **) realloc(word_matrix, word_count * sizeof(char *));*/
 			}
 			if (str[i] != ' ')
 			{
@@ -71,7 +70,6 @@ char **strtow(char *str)
 		}
 	}
 
-	/*printf("Total Words: %d - Total Letters %d\n", word_count, total_letter_count);*/
 
 	if (word_count == 0)
 		return (NULL);
@@ -110,8 +108,6 @@ char **strtow(char *str)
 	}
 
 	word_matrix[word] = NULL;
-
-	/*printf("Total Words: %d - Total Letters %d\n", word_count, total_letter_count);*/
 
 	return (word_matrix);
 }

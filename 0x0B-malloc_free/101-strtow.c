@@ -20,17 +20,18 @@ int count_total_words(char *s)
 		 * If the current character is a space or a
 		 * newline, we're not in a word
 		 *
-		 * */
+		 */
 		if (s[i] == ' ' || s[i] == '\n')
 		{
 			in_word = 0;
 		}
 			/*
+			 *
 			 * If the current character is not a space or
 			 * newline, and we're not in a word,
 			 * increment the word count
 			 *
-			 * */
+			 */
 		else if (in_word == 0)
 		{
 			count++;
@@ -38,14 +39,14 @@ int count_total_words(char *s)
 		}
 	}
 
-	return count;
+	return (count);
 }
 
 
 /**
  * copy_to_memory - Copy word from string to memory
  * @str: origional string
- * @c:
+ * @word_letters: Word Total Letter Count
  * @start: Start word index
  * @end: End word index
  * Return: number of words
@@ -65,19 +66,19 @@ char *copy_to_memory(char *str, int word_letters, int start, int end)
 	 * Copy letter from string to
 	 * the allocated memory locations
 	 * from start of word index to end of word index
-	 * */
+	 */
 	i = 0;
 	while (start < end)
 	{
 		/*printf("start: %d - end: %d\n", start, end);*/
-		*(word_memory+i) = str[start];
+		*(word_memory + i) = str[start];
 		/*printf("%c", *(word_memory+i));*/
 		start++;
 		i++;
 	}
 	/* printf("\n"); */
-	*(word_memory+i) = '\0';
-	return word_memory;
+	*(word_memory + i) = '\0';
+	return (word_memory);
 }
 
 /**
@@ -116,7 +117,7 @@ char **strtow(char *str)
 				string_matrix[k] = copy_to_memory(str, word_letters, start, end);
 				/* If the allocation has error then return NULL */
 				if (string_matrix[k] == NULL)
-					return NULL;
+					return (NULL);
 				k++;
 				/* Reset Word Letters Count */
 				word_letters = 0;

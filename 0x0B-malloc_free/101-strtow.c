@@ -17,7 +17,7 @@ char **strtow(char *str)
 	int found_start_word = 0, word_count = 0, word = 0, letters = 0, total_letter_count = 0;
 	char **word_matrix;
 
-	printf("%s\n", str);
+	/*printf("%s\n", str);*/
 
 	for (i = 0;; i++)
 	{
@@ -28,7 +28,7 @@ char **strtow(char *str)
 			if (str[i] != ' ' && found_start_word == 0)
 			{
 				found_start_word = 1;
-				printf("[%d] Word Start At: %c\n", i, str[i]);
+				/*printf("[%d] Word Start At: %c\n", i, str[i]);*/
 				word_count++;
 				/* Store Start and End in Variable */
 				st_end_size++;
@@ -46,7 +46,7 @@ char **strtow(char *str)
 			if (str[i] == ' ' && found_start_word == 1)
 			{
 				found_start_word = 0;
-				printf("[%d] Word End At: %c\n", i, str[i - 1]);
+				/*printf("[%d] Word End At: %c\n", i, str[i - 1]);*/
 				/* Store Start and End in Variable */
 				st_end_size++;
 				st_end = (int *) realloc(st_end, st_end_size * sizeof(int));
@@ -59,7 +59,7 @@ char **strtow(char *str)
 			if (found_start_word == 1)
 			{
 				found_start_word = 0;
-				printf("[%d] Word End At: %c\n", i, str[i - 1]);
+				/*printf("[%d] Word End At: %c\n", i, str[i - 1]);*/
 				/* Store Start and End in Variable */
 				st_end_size++;
 				st_end = (int *) realloc(st_end, st_end_size * sizeof(int));

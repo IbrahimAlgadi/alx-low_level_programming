@@ -53,8 +53,10 @@ int count_total_words(char *s)
 char *copy_to_memory(char *str, int word_letters, int start, int end)
 {
 	char *word_memory;
+	int i;
 
-	/* printf("Word Letters: %d\n", word_letters); */
+	/*printf("String: %s\n", str);*/
+	/*printf("Word Letters: %d\n", word_letters);*/
 	/* Allocate memory equal to the size of letter plus '\0' */
 	word_memory = (char *) malloc(sizeof(char) * (word_letters + 1));
 	if (word_memory == NULL)
@@ -64,8 +66,16 @@ char *copy_to_memory(char *str, int word_letters, int start, int end)
 	 * the allocated memory locations
 	 * from start of word index to end of word index
 	 * */
+	i = 0;
 	while (start < end)
-		*word_memory++ = str[start++];
+	{
+		/*printf("start: %d - end: %d\n", start, end);*/
+		*(word_memory+i) = str[start];
+		/*printf("%c", *(word_memory+i));*/
+		start++;
+		i++;
+	}
+	printf("\n");
 	*word_memory = '\0';
 	return word_memory;
 }
@@ -85,6 +95,7 @@ char **strtow(char *str)
 	while (*(str + len))
 		len++;
 	total_words = count_total_words(str);
+	/*printf("Total Words: %d\n", total_words);*/
 	if (total_words == 0)
 		return (NULL);
 

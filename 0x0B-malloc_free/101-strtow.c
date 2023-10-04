@@ -75,8 +75,8 @@ char *copy_to_memory(char *str, int word_letters, int start, int end)
 		start++;
 		i++;
 	}
-	printf("\n");
-	*word_memory = '\0';
+	/* printf("\n"); */
+	*(word_memory+i) = '\0';
 	return word_memory;
 }
 
@@ -95,7 +95,7 @@ char **strtow(char *str)
 	while (*(str + len))
 		len++;
 	total_words = count_total_words(str);
-	/*printf("Total Words: %d\n", total_words);*/
+	/* printf("Total Words: %d\n", total_words); */
 	if (total_words == 0)
 		return (NULL);
 

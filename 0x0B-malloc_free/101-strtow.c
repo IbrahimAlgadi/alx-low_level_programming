@@ -63,7 +63,7 @@ char **strtow(char *str)
 	for(i=0; i < st_end_idx; i+=2) {
 		/*printf("First Word Size: %d \n", st_end[i+1] - st_end[i]);*/
 		/* end of word index - start of word index = word letter count */
-		word_matrix[word] = (char *) malloc(((st_end[i+1] - st_end[i]) + 1) * sizeof(char));
+		word_matrix[word] = (char *) malloc(((st_end[i+1] - st_end[i])) * sizeof(char));
 
 		if (word_matrix[word] == NULL)
 			return (NULL);

@@ -1,6 +1,28 @@
 #include "main.h"
 
 /**
+ * log_error - logs errors
+ *
+ * @m: close return value of fd
+ * @n: close return value of fd
+ *
+ * Return: NULL
+ */
+
+void log_error(int m, int n)
+{
+	if (m < 0 || n < 0)
+	{
+		if (m < 0)
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_read);
+		if (n < 0)
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_write);
+		exit(100);
+	}
+}
+
+
+/**
  * main - Write a program that copies the content
  * of a file to another file.
  *
@@ -42,14 +64,7 @@ int main(int argc, char *argv[])
 	}
 	m = close(fd_read);
 	n = close(fd_write);
-	if (m < 0 || n < 0)
-	{
-		if (m < 0)
-			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_read);
-		if (n < 0)
-			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_write);
-		exit(100);
-	}
+	log_error(m, n);
 
 	return (0);
 }

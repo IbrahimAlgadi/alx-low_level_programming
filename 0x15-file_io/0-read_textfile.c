@@ -11,36 +11,34 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
+	int fd;
+	int i;
+	int y;
 	char *buff;
-	int rc; /* read character counters */
-	int wc; /* write character counters */
-	int fp;  /* File descriptor */
 
 	if (!filename)
 		return (0);
-
-	fp = open(filename, O_RDONLY);
-	if (fp < 0)
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
 		return (0);
-
-	buff = malloc(letters * sizeof(char));
-	if (buff == NULL)
+	buff = malloc(sizeof(char) * letters);
+	if (!buff)
 		return (0);
-
-	rc = read(fp, buff, letters);
-	if (rc < 0)
+	i = read(fd, buff, letters);
+	if (i < 0)
 	{
 		free(buff);
 		return (0);
 	}
-	buff[rc] = '\0';
-	close(fp);
-
-	wc = write(STDOUT_FILENO, buff, rc);
+	buff[i] = '\0';
+	close(fd);
+	y = write(STDOUT_FILENO, buff, i);
+	if (y < 0)
+	{
+		free(buff);
+		return (0);
+	}
 	free(buff);
 
-	if (wc < 0)
-		return (0);
-
-	return (wc);
+	return (y);
 }

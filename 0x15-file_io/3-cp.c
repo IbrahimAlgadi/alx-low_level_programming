@@ -1,23 +1,5 @@
 #include "main.h"
 
-
-/**
- * check_error - Check file descriptor errors
- * of a file to another file.
- *
- * @file_des: file_des
- *
- * Return: None
- */
-void check_error(int file_des)
-{
-	if (fd_read < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
-}
-
 /**
  * main - Write a program that copies the content
  * of a file to another file.
@@ -38,8 +20,11 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 	fd_read = open(argv[1], O_RDONLY);
-	check_error(fd_read);
-
+	if (fd_read < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
 	fd_write = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	while ((x = read(fd_read, buf, BUFSIZ)) > 0)
 	{
@@ -50,7 +35,11 @@ int main(int argc, char *argv[])
 			exit(99);
 		}
 	}
-	check_error(x);
+	if (x < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
 	m = close(fd_read);
 	n = close(fd_write);
 	if (m < 0 || n < 0)

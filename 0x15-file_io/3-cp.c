@@ -4,12 +4,14 @@
  * log_error - logs errors
  *
  * @m: close return value of fd
+ * @fd_read: fd_read
  * @n: close return value of fd
+ * @fd_write: fd_write
  *
  * Return: NULL
  */
 
-void log_error(int m, int n)
+void log_error(int m, int fd_read, int n, int fd_write)
 {
 	if (m < 0 || n < 0)
 	{
@@ -64,7 +66,7 @@ int main(int argc, char *argv[])
 	}
 	m = close(fd_read);
 	n = close(fd_write);
-	log_error(m, n);
+	log_error(m, fd_read, n, fd_write);
 
 	return (0);
 }

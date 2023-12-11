@@ -2,6 +2,7 @@
 ~
 **/*.exe
 **/*.o
+~./0x18-dynamic_libraries/*.o
 *.exe
 /0x13-more_singly_linked_lists/101-main.c
 /0x13-more_singly_linked_lists/100-reverse_listint.c
